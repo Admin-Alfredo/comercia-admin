@@ -7,31 +7,13 @@ import { useForm } from 'react-hook-form'
 import axios, { AxiosResponse } from "axios";
 import Button from "../../../components/Button";
 import { Link } from 'react-router-dom'
+
 export default function PageNovoProduto() {
   const { register, handleSubmit } = useForm()
   const [msg, setMsg] = useState<string[]>([])
   console.log("CARRREGANDO....")
   const createProduto = (data: any) => {
     console.log("NOVO PRODUTO: >> ", data)
-    axios.post('http://localhost:5000/api/produtos', data)
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-
-    fetch('http://localhost:5000/api/produtos', { method: "POST", body: JSON.stringify(data)})
-      .then(async (res: Response) => {
-        if(res.statusText !== 'OK')  
-          return new Error(await res.json())
-        // const  data = await res
-        // if(res.status > 299)
-          // return 
-        return res.json()
-      })
-      .then(console.log)
-      .catch(err => console.error(err.message))
 
     fetch('http://localhost:5000/api/produtos',
       {
@@ -45,16 +27,14 @@ export default function PageNovoProduto() {
       })
 
 
-    // console.log(data)
   }
   return (
     <Container>
       <Link to="/admin/produtos">
         {msg.map(data => <p> {data} </p>)}
-        <button>voltar em produtos</button>
+        {/* <button>voltar em produtos</button> */}
       </Link>
-      <h1>Registrar no produto</h1>
-      { }
+      <h1>Registrar novo produto</h1>
       <Form onSubmit={handleSubmit(createProduto)}>
         <FormField>
           <label htmlFor="nome" className="blockcot">Nome</label>
@@ -83,7 +63,6 @@ export default function PageNovoProduto() {
             id="quantidade"
             placeholder="quantidade do produto"
             {...register('quantidade')}
-
           />
 
         </FormField>

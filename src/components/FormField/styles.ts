@@ -38,5 +38,9 @@ export const Container = styled.div`
       outline: 2px solid  #bc89f1;
       border: 2px solid #a36cdf;
     }
+
+    & > span{
+      font-size: 1.2rem;
+    }
 `
 

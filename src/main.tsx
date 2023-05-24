@@ -5,6 +5,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import PageProdutos from './pages/Produtos/index'
 import PageNovoProduto from './pages/Produtos/Novo'
 import Header from './components/Header/index';
+import PageDetalhesProduto from './pages/Produtos/detalhes'
 const routes = createBrowserRouter([
   {
     path: '/admin/produtos',
@@ -21,6 +22,15 @@ const routes = createBrowserRouter([
       <>
         <Header />
         <PageNovoProduto />
+      </>
+    )
+  },
+  {
+    path: '/admin/produtos/detalhes/:_id',
+    element: (
+      <>
+        <Header />
+        <PageDetalhesProduto />
       </>
     )
   }
