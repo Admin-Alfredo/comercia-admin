@@ -2,11 +2,10 @@ import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { Hero } from '../styles'
 import { useEffect } from 'react';
-import axios, { AxiosResponse } from 'axios';
+import axios, { AxiosError, AxiosResponse } from 'axios';
 import { BASE_API_URL } from '../../../../env';
 import { Produto } from '../../../classes/Produto';
 import { CardDetalhesProduto, WrapperCardDetalhes } from './styles';
-import FormField from '../../../components/FormField';
 
 export default function PageDetalhesProduto() {
   const [produto, setProduto] = useState<Produto[]>([])
@@ -32,7 +31,6 @@ export default function PageDetalhesProduto() {
           input.checked = visible
       }).catch((err: AxiosError) => {
         console.log("SET VISIBLE: ", err)
-
       })
   }
 
@@ -56,31 +54,31 @@ export default function PageDetalhesProduto() {
               <p>{prod.descricao}</p>
               <br />
 
-              <FormField>
+              <div className="field-detalhes">
                 <label > preço </label>
                 <span>{prod.preco}</span>
-              </FormField>
-              <FormField>
+              </div>
+              <div className="field-detalhes">
                 <label> quantidade </label>
                 <span>{prod.quantidade}</span>
-              </FormField>
-              <FormField>
+              </div>
+              <div className="field-detalhes">
                 <label > visibilidade</label>
-
-                <div className="switch-container" onClick={(e: any) =>
-                  handlerSetVisibleProduto(
-                    {
-                      visible: prod.visible,
-                      _id: prod._id,
-                      target: e.currentTarget
-                    })
-                }>
-                  <input type="checkbox" id={'swb-' + prod._id} checked={prod.visible} />
-                  <label className="switch" htmlFor={'swb-' + prod._id}>
-                    <div className="slider"></div>
-                  </label>
-                </div>
-              </FormField>
+                <span>
+                  <div className="switch-container" onClick={(e: any) =>
+                    handlerSetVisibleProduto(
+                      {
+                        visible: prod.visible,
+                        _id: prod._id,
+                        target: e.currentTarget
+                      })}>
+                    <input type="checkbox" id={'swb-' + prod._id} checked={prod.visible} />
+                    <label className="switch" htmlFor={'swb-' + prod._id}>
+                      <div className="slider"></div>
+                    </label>
+                  </div>
+                </span>
+              </div>
 
             </div>
 

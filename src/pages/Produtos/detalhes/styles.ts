@@ -29,5 +29,20 @@ export const CardDetalhesProduto = styled.div`
   & > .wrapper-detalhes{
 
   }
+  & > .wrapper-detalhes .field-detalhes{
+    display: flex;
+    margin: 10px 0px;
+    align-items: center;
+    > label{
+      font-size: 1.4rem;
+      color:#818181;
+      margin-right: 15px;
+    }
+    > span{
+
+      font-size: 1.5rem;
+      color:#777;
+    }
+  }
 
 `
